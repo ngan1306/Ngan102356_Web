@@ -1,6 +1,8 @@
 package com.example.lab3.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -9,27 +11,30 @@ import jakarta.persistence.Table;
 public class Student {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private int age;
     private String email;
+    private String gender; // thêm giới tính
 
     public Student() {
     }
 
-    public Student(int id, String name, int age, String email) {
+    public Student(Long id, String name, int age, String email, String gender) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
+        this.gender = gender;
     }
 
     // Getter & Setter
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -55,5 +60,12 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }
